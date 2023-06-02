@@ -5,8 +5,6 @@ register = template.Library()
 
 @register.simple_tag
 def is_exist(model_name, model, check, *args, **kwargs):
-    print(model)
-    print(check)
     if model_name == 'is_read':
         model = model.filter(lesson__pk=check).first()
     else:

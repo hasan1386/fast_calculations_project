@@ -30,7 +30,6 @@ class RegisterUserView(View):
             password = register_form.cleaned_data.get('password')
             first_name = register_form.cleaned_data.get('first_name')
             last_name = register_form.cleaned_data.get('last_name')
-            print()
             if User.objects.filter(email=register_form.cleaned_data.get('email')).first() is None:
                 if User.objects.filter(username=register_form.cleaned_data.get('username')).first() is None:
                     email_active_code = choice(list(range(1000000, 10000000)))
