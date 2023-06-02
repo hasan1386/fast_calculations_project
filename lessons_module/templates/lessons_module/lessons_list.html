@@ -1,0 +1,64 @@
+{% extends 'layout/base.html' %}
+{% load thumbnail %}
+{% load poll_extras %}
+
+{% block title %}لیست درس ها{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h3 class="text-center">لیست دروس:</h3>
+
+        <div class="row">
+            {% for lesson in lessons %}
+                <div class="col-md-3 m-2 m-md-0 p-0 animate__animated animate__jackInTheBox {% if forloop.counter > 10 %}animate__delay-1s{% elif forloop.counter < 5 %}animate__fast{% endif %}">
+                    <div class="card m-2 h-100">
+                        <div class="card-body row">
+                            <div class="col-4">
+                                {% thumbnail lesson.image '500x500' quality=70 crop=center as im %}
+                                    <img src="{{ im.url }}" class="card-img-top w-100" alt="{{ lesson.title }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detail-lesson' pk=lesson.pk %}" class="{% is_exist 'is_read' is_read lesson.pk %}">
+                                        درس {{ lesson.pk }}:
+                                        {{ lesson.title }}
+                                    </a>
+                                </h5>
+                                <a href="{% url 'detail-lesson' pk=lesson.pk %}" class="btn btn-primary">رفتن به درس</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for exercise in lesson.exercises_set.all %}
+                    <div class="col-md-3 m-2 m-md-0 p-0 animate__animated animate__rollIn {% if forloop.counter > 10 %}animate__delay-1s{% elif forloop.counter < 5 %} animate__fast {% endif %}">
+                        <div class="card m-2 h-100">
+                            <div class="card-body row">
+                                <div class="col-4">
+                                    {% thumbnail lesson.image '500x500' quality=70 crop=center as im %}
+                                        <img src="{{ im.url }}" class="card-img-top w-100" alt="{{ lesson.title }}">
+                                    {% endthumbnail %}
+                                </div>
+                                <div class="col-8">
+                                    <h5 class="card-title">
+                                        <a href="{% url 'exercise' pk=exercise.pk %}" class="{% is_exist 'is_solve' is_solve exercise.pk %}">
+                                            تمرین:
+                                            {{ lesson.title }}</a>
+                                    </h5>
+                                    <a href="{% url 'exercise' pk=exercise.pk %}" class="btn btn-primary">
+                                        حل تمرین
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

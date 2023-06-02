@@ -1,0 +1,7 @@
+venv
+.venv
+db.sqlite3
+*.swp
+.vscode
+.idea
+fast_calculations_project/settings.py

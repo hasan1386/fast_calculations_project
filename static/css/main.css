@@ -1,0 +1,61 @@
+@font-face {
+    src: url("/static/fonts/BYekan.woff");
+    font-family: main_font;
+}
+
+* {
+    font-family: main_font, serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo-header {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logo-main {
+    width: 20rem;
+    height: 20rem;
+}
+
+.icon-home {
+    padding: 10px;
+    font-size: xx-large;
+    border: 3px solid rgb(36, 106, 236);
+    border-radius: 10px;
+}
+
+.errorlist {
+    color: red !important;
+    margin: 0;
+    padding: 0;
+}
+
+.errorlist li {
+    margin: 0;
+    padding: 0;
+}
+
+.left {
+    position: absolute;
+    left: 0;
+}
+
+.forget-password-form {
+    width: 50%;
+    max-width: 500px;
+}
+
+.text-large {
+    font-size: x-large;
+}

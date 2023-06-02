@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}دربارۀ ما{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 animate__animated animate__lightSpeedInRight">
+                <h3>درباره ما:</h3>
+                <p>{{ site_setting.about_us|linebreaks }}</p>
+            </div>
+            <div class="col-md-4 border-start mt-3 mt-md-0">
+                    <h3 class="text-center animate__animated animate__flipInX animate__slow">لوگوی سایت:</h3>
+
+                    <img src="{{ site_setting.logo.url }}" class="w-100 rounded-3 animate__animated animate__fadeIn" alt="{{ site_setting.site_title }}">
+            </div>
+        </div>
+    </div>
+{% endblock %}

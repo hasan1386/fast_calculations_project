@@ -1,0 +1,24 @@
+<footer class="border-top p-3 pb-0 mt-5">
+    <div class="row">
+        <div class="col-md-9">
+            <h4>درباره ما</h4>
+            <p>{{ site_setting.about_us|linebreaks }}</p>
+        </div>
+        <div class="col-md-3">
+            <h4>لینک ها</h4>
+            <ul>
+                {% for link in footer_link %}
+                    <li>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <p>©
+            {{ site_setting.copyright }}
+        </p>
+    </div>
+</footer>

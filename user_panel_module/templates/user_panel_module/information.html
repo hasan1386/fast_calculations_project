@@ -1,0 +1,42 @@
+{% extends 'user_panel_module/user_panel.html' %}
+{% load thumbnail %}
+
+{% block title %}اطلاعات کاربری{% endblock %}
+
+{% block main %}
+    <h4>ویرایش اطلاعات کاربری:</h4>
+    <form enctype="multipart/form-data" action="#" method="post" id="edit_profile">
+        {% csrf_token %}
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+        <br>
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+        <br>
+        {{ form.username.label_tag }} <b class="text-danger">* الزامی</b>
+        {{ form.username }}
+        {{ form.username.errors }}
+        <br id="after_username">
+        {{ form.avatar.label_tag }}
+        {{ form.avatar }}
+        {{ form.avatar.errors }}
+        {% if current_user.avatar %}
+            <p>تصویر فعلی:</p>
+            {% thumbnail request.user.avatar "100x100" quality=100 as im %}
+                <img src="{{ im.url }}" alt="{{ current_user.get_full_name }}" class="media-object">
+            {% endthumbnail %}
+        {% endif %}
+        <br>
+        <br>
+        {{ form.about_user.label_tag }}
+        {{ form.about_user }}
+        {{ form.about_user.errors }}
+        <br>
+        {{ form.address.label_tag }}
+        {{ form.address }}
+        {{ form.address.errors }}
+        <button type="submit" class="btn btn-warning btn-margin" id="submit">ذخیره</button>
+    </form>
+{% endblock %}

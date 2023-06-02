@@ -1,0 +1,47 @@
+<header>
+    <nav class="navbar sticky-top navbar-expand-lg w-100">
+        <div class="container-fluid">
+            <a class="navbar-brand border-end p-2" href="{% url 'home-page' %}">
+                <img class="logo-header rounded-circle" src="/static/image/logo.jpg" alt="logo"> محاسبات سریع</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'user-panel-page' %}">پنل کاربری</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'lessons-list' %}">آموزش</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about-us-page' %}">دربارۀ ما</a>
+                        </li>
+                        <li class="nav-item left">
+                            <a class="nav-link px-4" href="{% url 'log-out-page' %}">خروج</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'login-page' %}">ورود</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'register-page' %}">ثبت نام</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">دربارۀ ما</a>
+                        </li>
+                    {% endif %}
+                    <form action="#" method="post" class="ms-3">
+                        <i class="fa fa-moon-o me-2 text-large"></i>
+                        <div class="form-check form-switch d-inline-flex align-items-center justify-content-center">
+                            <input class="form-check-input form-select-lg float-none" onchange="change_theme(this)" {% if request.session.theme != 'dark' %} checked {% endif %} type="checkbox" role="switch" id="change-theme">
+                        </div>
+                        <i class="fa fa-sun-o text-large"></i>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

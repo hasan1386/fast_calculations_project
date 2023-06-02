@@ -1,0 +1,23 @@
+{% load poll_extras %}
+
+<ul class="list-group animate__animated animate__bounceInDown">
+    {% for lessonlist in lessons %}
+        <li class="list-group-item">
+            <a href="{% url 'detail-lesson' pk=lessonlist.pk %}"
+               class="{% is_exist 'is_read' is_read lessonlist.pk %} animate__animated animate__slow animate__lightSpeedInLeft {% if forloop > 7 %} animate__delay-1s {% endif %} d-block">
+                درس {{ lessonlist.pk }}:
+                {{ lessonlist.title }}
+            </a>
+        </li>
+        {% for exercise in lessonlist.exercises_set.all %}
+            <li class="list-group-item ps-5">
+                <a href="{% url 'exercise' pk=exercise.pk %}"
+                   class="{% is_exist 'is_solve' is_solve exercise.pk %} animate__animated animate__slower animate__lightSpeedInLeft d-block">
+                    تمرین:
+                    {{ lessonlist.title }}
+                </a>
+            </li>
+        {% endfor %}
+
+    {% endfor %}
+</ul>

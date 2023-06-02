@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+{% block title %}فعالسازی حساب کاربری{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="alert alert-info w-50 mx-auto">
+			<h2 class="mb-3 text-center">کد فعالسازی به ایمیل شما ارسال شد!</h2>
+			<form action="{% url 'active-account' %}" method="post">
+				{% csrf_token %}
+				{{ form.email_active_code.label_tag }}
+				{{ form.email_active_code }}
+				{{ form.email_active_code.errors }}
+				<button class="btn btn-success mt-2 w-100">فعالسازی حساب کاربری</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

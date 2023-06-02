@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+{% block title %}ثبت نام{% endblock %}
+{% block content %}
+    <div class="container animate__animated animate__backInDown border border-1 rounded row mx-auto">
+        <div class="col-md-4">
+            <img src="/static/image/math_planet.jpg" alt="موجودات ترسناک ریاضی" class="w-100 rounded">
+            <h4 class=" text-center p-2">از موجودات ریاضی نترسید!</h4>
+        </div>
+        <div class="col-md-8 p-3">
+            <h5 class="text-center">ثبت نام حساب کاربری</h5>
+            <form action="{% url 'register-page' %}" method="post">
+                {% csrf_token %}
+                {{ register_form.email.label_tag }}
+                {{ register_form.email }}
+                {{ register_form.email.errors }}
+                <br>
+                {{ register_form.username.label_tag }}
+                {{ register_form.username }}
+                {{ register_form.username.errors }}
+                <br>
+                {{ register_form.first_name.label_tag }}
+                {{ register_form.first_name }}
+                {{ register_form.first_name.errors }}
+                <br>
+                {{ register_form.last_name.label_tag }}
+                {{ register_form.last_name }}
+                {{ register_form.last_name.errors }}
+                <br>
+                {{ register_form.password.label_tag }}
+                {{ register_form.password }}
+                {{ register_form.password.errors }}
+                <br>
+                {{ register_form.confirm_password.label_tag }}
+                {{ register_form.confirm_password }}
+                {{ register_form.confirm_password.errors }}
+                <button type="submit" class="btn btn-success mt-2">ثبت نام</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

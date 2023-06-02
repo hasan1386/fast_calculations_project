@@ -1,0 +1,70 @@
+{% extends 'layout/base.html' %}
+{% load thumbnail %}
+{% block title %}محاسبات سریع{% endblock %}
+{% block content %}
+    <div class="row w-100 p-0 m-0">
+        <div class="col-md-12 bg-primary p-0">
+            {# {% thumbnail '/static/image/logo.jpg' '300x300' as im %}#}
+            {# <img src="{{ im.url }}" alt="محاسبات سریع">#} {# {% endthumbnail %}#}
+            <div class="d-flex align-items-center justify-content-center flex-column">
+                <img src="/static/image/logo.jpg" class="logo-main animate__animated animate__fadeIn rounded-circle"
+                     alt="محاسبات سریع">
+                <h2 class="animate__animated animate__lightSpeedInRight text-white p-3">در سریع ترین زمان، از ماشین حساب
+                    خلاص شوید!
+                </h2>
+                <h5 class="animate__animated animate__fadeIn animate__delay-1s mb-2 p-2">
+                    به صورت کاملاً رایگان، محاسبات سریع را یاد بگیرید!
+                </h5>
+                <a href="{% url 'lessons-list' %}"
+                   class="btn btn-outline-warning animate__animated animate__rotateIn animate__delay-1s">همین
+                    الان شروع کنید...</a>
+            </div>
+        </div>
+        <img src="/static/image/wave.svg" alt="wave svg" class="w-100 p-0 m-0">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 p-3">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-md-3 text-center">
+                            <i class="fa fa-pencil icon-home"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h5 class="card-title">تمرین و تکرار</h5>
+                            <p class="card-text">بعد از هرآموزش، کلی مثال آموزشی برای یادگیری بهتر داریم!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 p-3">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-md-3 text-center">
+                            <i class="fa fa-dollar icon-home"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h5 class="card-title">کاملا رایگان!</h5>
+                            <p class="card-text">می‌توانید به صورت کاملا رایگان تمام دوره را پشت سر بگذارید!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 p-3">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-md-3 text-center">
+                            <i class="fa fa-calculator icon-home"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h5 class="card-title">یادگیری در کوتاه ترین زمان!</h5>
+                            <p class="card-text">می‌توانید در کوتاه ترین زمان، از ماشین حساب بی‌نیاز شوید!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

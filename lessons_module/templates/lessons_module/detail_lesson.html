@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+{% load render_partial %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                {% render_partial 'lessons_module.views.ListLessonComponentView' %}
+            </div>
+            <div class="col-md-8 mt-2 animate__animated animate__fadeIn">
+                <img src="{{ lesson.image.url }}" class="w-75 rounded d-block mx-auto" alt="{{ lesson.title }}">
+                <h1 class="text-center">«{{ lesson.title }}»</h1>
+                <p>{{ lesson.description|safe }}</p>
+                {% if next_exercise %}
+                    <a class="btn btn-primary" href="{% url 'exercise' pk=next_exercise.pk %}">
+                        حل تمرین مربوط به این درس
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
